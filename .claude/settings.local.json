@@ -9,7 +9,8 @@
       "Bash(createdb grocerist:*)",
       "Bash(curl:*)",
       "Bash(psql:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(gh repo:*)"
     ]
   }
 }
