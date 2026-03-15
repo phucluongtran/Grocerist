@@ -12,7 +12,8 @@
       "Bash(node:*)",
       "Bash(gh repo:*)",
       "Bash(git remote:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ]
   }
 }
