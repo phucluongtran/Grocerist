@@ -1,0 +1,61 @@
+name,quantity,low_stock_threshold
+Whole Milk 1L,45,15
+Skim Milk 1L,30,15
+Cheddar Cheese 200g,28,10
+Greek Yogurt 500g,22,8
+Butter 250g,18,8
+White Bread,35,10
+Whole Wheat Bread,20,8
+Sourdough Bread,12,5
+Croissant,24,10
+Eggs 12-pack,40,15
+Free Range Eggs 6-pack,25,10
+Chicken Breast 500g,20,8
+Ground Beef 500g,15,8
+Pork Chops 400g,12,5
+Salmon Fillet 300g,8,5
+Canned Tuna 150g,60,20
+White Rice 1kg,55,15
+Brown Rice 1kg,30,10
+Pasta Spaghetti 500g,45,15
+Pasta Penne 500g,40,15
+All-Purpose Flour 1kg,35,10
+Sugar 1kg,40,10
+Olive Oil 500ml,22,8
+Vegetable Oil 1L,18,8
+Soy Sauce 250ml,25,10
+Tomato Ketchup 500ml,30,10
+Mayonnaise 400g,20,8
+Apple Red 1kg,35,12
+Banana 1kg,50,20
+Orange 1kg,30,12
+Strawberry 250g,7,5
+Watermelon Whole,6,3
+Tomato 1kg,40,15
+Onion 1kg,55,20
+Garlic 200g,35,12
+Carrot 1kg,42,15
+Potato 2kg,38,12
+Broccoli,15,6
+Spinach 200g,12,5
+Lettuce,18,8
+Orange Juice 1L,35,12
+Apple Juice 1L,28,10
+Sparkling Water 1.5L,60,20
+Coca-Cola 1.5L,45,15
+Coffee Ground 250g,20,8
+Black Tea 50 bags,25,8
+Cornflakes 500g,22,8
+Oats 1kg,18,8
+Muesli 500g,15,6
+Chocolate Bar 100g,50,20
+Potato Chips 150g,40,15
+Biscuits 200g,35,12
+Dish Soap 500ml,20,8
+Laundry Detergent 1kg,15,6
+Toilet Paper 4-roll,30,10
+Shampoo 300ml,18,6
+Toothpaste 100ml,22,8
+Hand Soap 250ml,25,10
+Frozen Pizza,14,6
+Ice Cream 500ml,10,4

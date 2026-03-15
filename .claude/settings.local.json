@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(cd:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(createdb grocerist:*)",
+      "Bash(curl:*)",
+      "Bash(psql:*)",
+      "Bash(node:*)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "grocerist-v2",
+  "private": true,
+  "scripts": {
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "migrate": "cd server && npm run migrate"
+  }
+}

@@ -1,0 +1,61 @@
+name,category,sku,price,unit
+Whole Milk 1L,Dairy,DAI001,1.99,litre
+Skim Milk 1L,Dairy,DAI002,1.89,litre
+Cheddar Cheese 200g,Dairy,DAI003,3.49,pack
+Greek Yogurt 500g,Dairy,DAI004,2.79,tub
+Butter 250g,Dairy,DAI005,2.99,pack
+White Bread,Bakery,BAK001,1.50,loaf
+Whole Wheat Bread,Bakery,BAK002,1.75,loaf
+Sourdough Bread,Bakery,BAK003,2.99,loaf
+Croissant,Bakery,BAK004,0.99,each
+Eggs 12-pack,Dairy,DAI006,3.99,pack
+Free Range Eggs 6-pack,Dairy,DAI007,2.49,pack
+Chicken Breast 500g,Meat,MEA001,5.99,pack
+Ground Beef 500g,Meat,MEA002,4.99,pack
+Pork Chops 400g,Meat,MEA003,4.49,pack
+Salmon Fillet 300g,Seafood,SEA001,6.99,pack
+Canned Tuna 150g,Seafood,SEA002,1.29,can
+White Rice 1kg,Grains,GRA001,2.49,bag
+Brown Rice 1kg,Grains,GRA002,2.99,bag
+Pasta Spaghetti 500g,Grains,GRA003,1.49,pack
+Pasta Penne 500g,Grains,GRA004,1.49,pack
+All-Purpose Flour 1kg,Baking,BAK005,1.79,bag
+Sugar 1kg,Baking,BAK006,1.59,bag
+Olive Oil 500ml,Condiments,CON001,5.49,bottle
+Vegetable Oil 1L,Condiments,CON002,2.99,bottle
+Soy Sauce 250ml,Condiments,CON003,1.99,bottle
+Tomato Ketchup 500ml,Condiments,CON004,2.29,bottle
+Mayonnaise 400g,Condiments,CON005,2.49,jar
+Apple Red 1kg,Fruits,FRU001,2.99,kg
+Banana 1kg,Fruits,FRU002,1.49,kg
+Orange 1kg,Fruits,FRU003,2.49,kg
+Strawberry 250g,Fruits,FRU004,2.99,punnet
+Watermelon Whole,Fruits,FRU005,4.99,each
+Tomato 1kg,Vegetables,VEG001,1.99,kg
+Onion 1kg,Vegetables,VEG002,1.29,kg
+Garlic 200g,Vegetables,VEG003,1.49,pack
+Carrot 1kg,Vegetables,VEG004,1.19,kg
+Potato 2kg,Vegetables,VEG005,2.49,bag
+Broccoli,Vegetables,VEG006,1.79,each
+Spinach 200g,Vegetables,VEG007,1.99,bag
+Lettuce,Vegetables,VEG008,1.29,each
+Orange Juice 1L,Beverages,BEV001,2.99,bottle
+Apple Juice 1L,Beverages,BEV002,2.49,bottle
+Sparkling Water 1.5L,Beverages,BEV003,0.99,bottle
+Coca-Cola 1.5L,Beverages,BEV004,2.29,bottle
+Coffee Ground 250g,Beverages,BEV005,4.99,pack
+Black Tea 50 bags,Beverages,BEV006,2.49,box
+Cornflakes 500g,Breakfast,BRK001,2.99,box
+Oats 1kg,Breakfast,BRK002,2.29,bag
+Muesli 500g,Breakfast,BRK003,3.49,box
+Chocolate Bar 100g,Snacks,SNK001,1.49,each
+Potato Chips 150g,Snacks,SNK002,1.99,bag
+Biscuits 200g,Snacks,SNK003,1.79,pack
+Dish Soap 500ml,Household,HHD001,2.49,bottle
+Laundry Detergent 1kg,Household,HHD002,5.99,box
+Toilet Paper 4-roll,Household,HHD003,2.99,pack
+Shampoo 300ml,Personal Care,PRC001,3.99,bottle
+Toothpaste 100ml,Personal Care,PRC002,2.29,tube
+Hand Soap 250ml,Personal Care,PRC003,1.99,bottle
+Frozen Pizza,Frozen,FRZ001,4.49,each
+Ice Cream 500ml,Frozen,FRZ002,3.99,tub

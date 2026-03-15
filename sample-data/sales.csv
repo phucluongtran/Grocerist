@@ -1,0 +1,790 @@
+name,quantity,sale_price,date
+Chocolate Bar 100g,2,1.47,2026-01-14
+Coca-Cola 1.5L,1,2.3,2026-01-14
+Whole Milk 1L,2,1.96,2026-01-14
+White Rice 1kg,4,2.45,2026-01-14
+Olive Oil 500ml,4,5.44,2026-01-15
+Whole Milk 1L,2,1.96,2026-01-15
+Olive Oil 500ml,3,5.36,2026-01-15
+White Bread,4,1.5,2026-01-15
+Butter 250g,4,2.91,2026-01-15
+Pasta Spaghetti 500g,3,1.52,2026-01-15
+Olive Oil 500ml,3,5.52,2026-01-15
+Whole Milk 1L,2,2.02,2026-01-15
+Butter 250g,1,2.97,2026-01-15
+Orange Juice 1L,3,3.03,2026-01-15
+Tomato 1kg,1,2.0,2026-01-15
+Tomato 1kg,2,1.99,2026-01-15
+Eggs 12-pack,2,3.91,2026-01-15
+Banana 1kg,3,1.52,2026-01-15
+Frozen Pizza,1,4.42,2026-01-15
+Sparkling Water 1.5L,1,1.01,2026-01-15
+Eggs 12-pack,4,3.93,2026-01-15
+Frozen Pizza,3,4.41,2026-01-15
+White Rice 1kg,4,2.47,2026-01-15
+White Bread,4,1.54,2026-01-15
+White Bread,4,1.49,2026-01-15
+Chocolate Bar 100g,2,1.49,2026-01-15
+Ground Beef 500g,1,5.07,2026-01-15
+Pasta Spaghetti 500g,4,1.5,2026-01-16
+Canned Tuna 150g,4,1.28,2026-01-16
+Ground Beef 500g,1,5.04,2026-01-16
+Lettuce,3,1.31,2026-01-16
+Butter 250g,3,2.92,2026-01-16
+Whole Milk 1L,4,1.95,2026-01-16
+Carrot 1kg,3,1.22,2026-01-16
+Chicken Breast 500g,3,6.11,2026-01-16
+White Bread,2,1.47,2026-01-16
+Pasta Spaghetti 500g,4,1.45,2026-01-17
+Cheddar Cheese 200g,1,3.44,2026-01-17
+Cornflakes 500g,1,2.92,2026-01-17
+Banana 1kg,4,1.52,2026-01-17
+White Bread,2,1.48,2026-01-17
+Potato 2kg,4,2.56,2026-01-17
+Chocolate Bar 100g,3,1.48,2026-01-17
+Tomato 1kg,4,1.94,2026-01-17
+Skim Milk 1L,2,1.9,2026-01-17
+Whole Milk 1L,1,1.94,2026-01-17
+Eggs 12-pack,1,4.08,2026-01-18
+Chicken Breast 500g,3,6.05,2026-01-18
+Ground Beef 500g,4,4.91,2026-01-18
+Chocolate Bar 100g,4,1.52,2026-01-18
+White Bread,4,1.49,2026-01-19
+Potato 2kg,1,2.42,2026-01-19
+Chocolate Bar 100g,3,1.52,2026-01-19
+Coca-Cola 1.5L,1,2.26,2026-01-19
+Lettuce,2,1.29,2026-01-19
+Onion 1kg,2,1.32,2026-01-19
+Banana 1kg,1,1.48,2026-01-19
+Whole Milk 1L,1,2.05,2026-01-19
+Whole Wheat Bread,2,1.79,2026-01-19
+Potato 2kg,1,2.44,2026-01-19
+Banana 1kg,4,1.46,2026-01-20
+Canned Tuna 150g,3,1.27,2026-01-20
+Potato 2kg,1,2.5,2026-01-20
+Onion 1kg,1,1.31,2026-01-20
+Whole Milk 1L,4,1.99,2026-01-20
+Whole Milk 1L,2,1.94,2026-01-20
+Chicken Breast 500g,1,6.05,2026-01-20
+Tomato 1kg,2,2.0,2026-01-20
+Carrot 1kg,1,1.2,2026-01-20
+Carrot 1kg,2,1.17,2026-01-21
+Whole Wheat Bread,2,1.77,2026-01-21
+Chocolate Bar 100g,3,1.49,2026-01-21
+Whole Milk 1L,1,1.94,2026-01-21
+Chicken Breast 500g,3,6.13,2026-01-21
+White Bread,2,1.49,2026-01-21
+Onion 1kg,3,1.3,2026-01-21
+Ground Beef 500g,1,5.04,2026-01-21
+Carrot 1kg,3,1.16,2026-01-21
+White Bread,1,1.52,2026-01-21
+Cheddar Cheese 200g,2,3.44,2026-01-21
+Chocolate Bar 100g,3,1.49,2026-01-21
+Whole Wheat Bread,3,1.79,2026-01-21
+Skim Milk 1L,4,1.93,2026-01-21
+Apple Red 1kg,2,3.01,2026-01-22
+Whole Wheat Bread,1,1.71,2026-01-22
+Onion 1kg,2,1.29,2026-01-22
+Sparkling Water 1.5L,3,0.99,2026-01-22
+Onion 1kg,3,1.32,2026-01-22
+Whole Milk 1L,1,2.04,2026-01-22
+Coca-Cola 1.5L,3,2.33,2026-01-22
+Coca-Cola 1.5L,4,2.36,2026-01-22
+Butter 250g,2,3.06,2026-01-23
+Lettuce,1,1.27,2026-01-23
+Canned Tuna 150g,2,1.27,2026-01-23
+Onion 1kg,1,1.28,2026-01-23
+Coca-Cola 1.5L,1,2.34,2026-01-23
+Whole Wheat Bread,3,1.73,2026-01-23
+Frozen Pizza,2,4.42,2026-01-23
+Tomato 1kg,1,2.05,2026-01-23
+Banana 1kg,3,1.48,2026-01-23
+Coca-Cola 1.5L,3,2.25,2026-01-23
+Butter 250g,3,2.91,2026-01-23
+Apple Red 1kg,4,2.96,2026-01-23
+Whole Milk 1L,3,1.98,2026-01-23
+Tomato 1kg,2,1.96,2026-01-24
+Whole Milk 1L,2,1.97,2026-01-24
+Frozen Pizza,1,4.61,2026-01-24
+Ground Beef 500g,3,5.03,2026-01-24
+Chocolate Bar 100g,1,1.51,2026-01-24
+Chicken Breast 500g,3,6.01,2026-01-24
+Coca-Cola 1.5L,2,2.28,2026-01-24
+Apple Red 1kg,4,3.02,2026-01-24
+Pasta Spaghetti 500g,1,1.47,2026-01-24
+Banana 1kg,2,1.48,2026-01-24
+Potato 2kg,4,2.53,2026-01-24
+Onion 1kg,2,1.3,2026-01-24
+Eggs 12-pack,3,3.99,2026-01-24
+Skim Milk 1L,3,1.86,2026-01-24
+Carrot 1kg,2,1.16,2026-01-24
+Eggs 12-pack,1,3.93,2026-01-24
+Pasta Spaghetti 500g,2,1.51,2026-01-24
+Potato Chips 150g,4,1.99,2026-01-24
+Potato 2kg,2,2.44,2026-01-24
+Cheddar Cheese 200g,1,3.57,2026-01-24
+Potato Chips 150g,2,1.95,2026-01-24
+Whole Milk 1L,4,2.01,2026-01-25
+Eggs 12-pack,3,4.1,2026-01-25
+Butter 250g,4,3.01,2026-01-25
+Potato 2kg,4,2.54,2026-01-25
+Coffee Ground 250g,2,5.09,2026-01-25
+Chocolate Bar 100g,3,1.51,2026-01-25
+Potato 2kg,4,2.51,2026-01-25
+Banana 1kg,3,1.48,2026-01-25
+Eggs 12-pack,1,3.9,2026-01-25
+Apple Red 1kg,2,2.97,2026-01-25
+Coffee Ground 250g,2,5.05,2026-01-25
+Tomato 1kg,4,1.98,2026-01-26
+Ground Beef 500g,1,5.1,2026-01-26
+Onion 1kg,4,1.29,2026-01-26
+Eggs 12-pack,3,3.94,2026-01-26
+Butter 250g,2,2.99,2026-01-26
+Carrot 1kg,3,1.19,2026-01-26
+Onion 1kg,1,1.28,2026-01-26
+Chocolate Bar 100g,4,1.51,2026-01-26
+Frozen Pizza,1,4.38,2026-01-26
+Lettuce,4,1.26,2026-01-26
+Ground Beef 500g,4,4.89,2026-01-26
+Coffee Ground 250g,3,4.95,2026-01-26
+Potato 2kg,4,2.46,2026-01-26
+Apple Red 1kg,4,2.95,2026-01-26
+Whole Milk 1L,1,2.02,2026-01-27
+Ground Beef 500g,1,5.07,2026-01-27
+Toilet Paper 4-roll,2,2.94,2026-01-27
+Apple Red 1kg,1,3.01,2026-01-27
+White Bread,2,1.5,2026-01-27
+Coca-Cola 1.5L,3,2.33,2026-01-27
+Pasta Spaghetti 500g,1,1.51,2026-01-27
+Broccoli,2,1.84,2026-01-27
+White Rice 1kg,3,2.5,2026-01-27
+Carrot 1kg,2,1.16,2026-01-28
+Whole Wheat Bread,3,1.79,2026-01-28
+Pasta Spaghetti 500g,1,1.52,2026-01-28
+Cornflakes 500g,1,2.96,2026-01-28
+Coca-Cola 1.5L,4,2.33,2026-01-28
+Skim Milk 1L,1,1.88,2026-01-28
+Orange Juice 1L,3,3.01,2026-01-28
+Whole Milk 1L,4,2.01,2026-01-28
+Whole Wheat Bread,4,1.75,2026-01-28
+Chicken Breast 500g,3,5.93,2026-01-28
+Orange Juice 1L,2,3.05,2026-01-28
+Pasta Spaghetti 500g,1,1.47,2026-01-28
+Eggs 12-pack,1,3.99,2026-01-28
+Potato 2kg,3,2.44,2026-01-28
+Pasta Spaghetti 500g,2,1.48,2026-01-28
+Tomato 1kg,3,1.97,2026-01-28
+White Rice 1kg,2,2.52,2026-01-28
+Chicken Breast 500g,4,6.01,2026-01-28
+Whole Wheat Bread,2,1.77,2026-01-28
+Onion 1kg,2,1.28,2026-01-28
+Whole Milk 1L,3,1.99,2026-01-28
+Banana 1kg,3,1.48,2026-01-28
+Tomato 1kg,3,1.97,2026-01-28
+Banana 1kg,1,1.51,2026-01-28
+Eggs 12-pack,2,3.92,2026-01-28
+White Bread,4,1.48,2026-01-28
+Whole Wheat Bread,3,1.8,2026-01-28
+Eggs 12-pack,2,3.94,2026-01-29
+Whole Wheat Bread,1,1.76,2026-01-29
+Whole Milk 1L,2,2.01,2026-01-29
+White Bread,3,1.47,2026-01-29
+Whole Milk 1L,1,1.96,2026-01-29
+Banana 1kg,4,1.46,2026-01-29
+Potato 2kg,1,2.48,2026-01-29
+White Rice 1kg,1,2.44,2026-01-29
+Skim Milk 1L,4,1.9,2026-01-29
+Eggs 12-pack,2,4.06,2026-01-29
+White Rice 1kg,4,2.48,2026-01-29
+Banana 1kg,1,1.5,2026-01-29
+White Rice 1kg,1,2.56,2026-01-29
+Onion 1kg,2,1.3,2026-01-29
+White Rice 1kg,3,2.51,2026-01-29
+Whole Wheat Bread,1,1.74,2026-01-30
+Skim Milk 1L,4,1.87,2026-01-30
+Banana 1kg,4,1.45,2026-01-30
+Banana 1kg,2,1.53,2026-01-30
+Onion 1kg,2,1.32,2026-01-30
+Ground Beef 500g,2,4.86,2026-01-30
+Canned Tuna 150g,3,1.29,2026-01-30
+Pasta Spaghetti 500g,4,1.51,2026-01-30
+Carrot 1kg,1,1.22,2026-01-30
+Chicken Breast 500g,3,6.03,2026-01-30
+Chicken Breast 500g,1,5.84,2026-01-30
+Skim Milk 1L,1,1.95,2026-01-30
+Potato Chips 150g,2,1.99,2026-01-31
+Frozen Pizza,4,4.62,2026-01-31
+Whole Wheat Bread,4,1.73,2026-01-31
+White Rice 1kg,3,2.46,2026-01-31
+Orange Juice 1L,1,3.05,2026-01-31
+Onion 1kg,4,1.31,2026-01-31
+Chicken Breast 500g,1,5.97,2026-01-31
+Coca-Cola 1.5L,3,2.26,2026-01-31
+Broccoli,4,1.83,2026-01-31
+Coca-Cola 1.5L,4,2.28,2026-01-31
+Chicken Breast 500g,4,6.04,2026-01-31
+Pasta Spaghetti 500g,1,1.46,2026-01-31
+Carrot 1kg,4,1.16,2026-02-01
+Onion 1kg,2,1.31,2026-02-01
+Ground Beef 500g,1,4.98,2026-02-01
+Ground Beef 500g,1,5.03,2026-02-01
+Skim Milk 1L,2,1.89,2026-02-01
+Chicken Breast 500g,4,5.9,2026-02-01
+Banana 1kg,2,1.48,2026-02-01
+Cornflakes 500g,2,3.06,2026-02-01
+Apple Red 1kg,3,3.05,2026-02-02
+Canned Tuna 150g,4,1.32,2026-02-02
+Banana 1kg,4,1.49,2026-02-02
+Whole Milk 1L,3,1.97,2026-02-02
+Potato 2kg,4,2.45,2026-02-02
+Apple Red 1kg,4,2.91,2026-02-02
+Whole Wheat Bread,4,1.77,2026-02-02
+Sparkling Water 1.5L,4,0.98,2026-02-02
+Chicken Breast 500g,3,6.12,2026-02-02
+Whole Milk 1L,4,1.94,2026-02-02
+Whole Milk 1L,1,1.99,2026-02-02
+White Bread,3,1.49,2026-02-02
+Cheddar Cheese 200g,4,3.52,2026-02-02
+Broccoli,3,1.83,2026-02-02
+Carrot 1kg,1,1.2,2026-02-02
+Pasta Spaghetti 500g,2,1.5,2026-02-02
+Cheddar Cheese 200g,3,3.59,2026-02-02
+Potato 2kg,1,2.48,2026-02-02
+Potato Chips 150g,1,1.98,2026-02-02
+Whole Milk 1L,1,1.97,2026-02-03
+Onion 1kg,2,1.26,2026-02-03
+Eggs 12-pack,1,4.02,2026-02-03
+Onion 1kg,4,1.3,2026-02-03
+Chicken Breast 500g,2,5.98,2026-02-03
+White Rice 1kg,3,2.48,2026-02-03
+Coffee Ground 250g,4,5.11,2026-02-03
+Skim Milk 1L,3,1.91,2026-02-03
+Carrot 1kg,4,1.2,2026-02-03
+Butter 250g,2,2.97,2026-02-03
+Whole Wheat Bread,3,1.76,2026-02-03
+Tomato 1kg,3,1.93,2026-02-03
+Potato 2kg,4,2.46,2026-02-03
+Coffee Ground 250g,4,5.09,2026-02-04
+Potato Chips 150g,2,2.01,2026-02-04
+Eggs 12-pack,3,4.03,2026-02-04
+Canned Tuna 150g,2,1.3,2026-02-04
+Banana 1kg,4,1.45,2026-02-04
+Chocolate Bar 100g,4,1.46,2026-02-04
+Skim Milk 1L,2,1.92,2026-02-04
+Banana 1kg,3,1.49,2026-02-04
+Cornflakes 500g,4,3.07,2026-02-04
+Banana 1kg,3,1.51,2026-02-04
+Cornflakes 500g,3,3.04,2026-02-04
+Broccoli,4,1.84,2026-02-04
+White Bread,3,1.46,2026-02-04
+Broccoli,4,1.74,2026-02-04
+Butter 250g,1,2.98,2026-02-04
+White Rice 1kg,1,2.52,2026-02-04
+Cornflakes 500g,4,2.9,2026-02-04
+Carrot 1kg,3,1.22,2026-02-04
+Orange Juice 1L,4,3.06,2026-02-04
+Orange Juice 1L,3,3.02,2026-02-04
+Whole Milk 1L,4,1.94,2026-02-05
+Whole Milk 1L,2,2.04,2026-02-05
+Tomato 1kg,4,2.0,2026-02-05
+Tomato 1kg,2,2.04,2026-02-05
+Cornflakes 500g,4,3.07,2026-02-05
+Whole Milk 1L,2,2.03,2026-02-05
+Tomato 1kg,1,2.05,2026-02-05
+Onion 1kg,3,1.29,2026-02-05
+Tomato 1kg,2,2.05,2026-02-06
+Skim Milk 1L,1,1.92,2026-02-06
+Eggs 12-pack,2,4.11,2026-02-06
+Orange Juice 1L,2,2.91,2026-02-06
+Lettuce,2,1.3,2026-02-06
+Apple Red 1kg,1,2.95,2026-02-06
+White Bread,2,1.54,2026-02-06
+Canned Tuna 150g,2,1.25,2026-02-06
+White Bread,2,1.51,2026-02-06
+Butter 250g,1,2.93,2026-02-06
+White Bread,4,1.5,2026-02-06
+Potato 2kg,3,2.49,2026-02-06
+Chicken Breast 500g,3,5.97,2026-02-07
+Carrot 1kg,1,1.16,2026-02-07
+Whole Milk 1L,4,2.03,2026-02-07
+Canned Tuna 150g,4,1.3,2026-02-07
+Chocolate Bar 100g,2,1.45,2026-02-07
+Onion 1kg,3,1.3,2026-02-07
+Coffee Ground 250g,3,4.95,2026-02-07
+Apple Red 1kg,3,2.98,2026-02-07
+White Bread,2,1.49,2026-02-07
+Sparkling Water 1.5L,2,0.98,2026-02-07
+Butter 250g,4,2.97,2026-02-07
+Orange Juice 1L,1,2.96,2026-02-07
+Coca-Cola 1.5L,4,2.23,2026-02-07
+Tomato 1kg,1,1.94,2026-02-07
+White Bread,1,1.52,2026-02-07
+White Rice 1kg,3,2.52,2026-02-08
+White Rice 1kg,4,2.47,2026-02-08
+Butter 250g,3,2.92,2026-02-08
+Chocolate Bar 100g,2,1.46,2026-02-08
+Broccoli,4,1.76,2026-02-08
+Pasta Spaghetti 500g,1,1.48,2026-02-08
+White Bread,4,1.53,2026-02-09
+Banana 1kg,1,1.5,2026-02-09
+Eggs 12-pack,3,3.88,2026-02-09
+Sparkling Water 1.5L,1,0.97,2026-02-09
+Banana 1kg,2,1.5,2026-02-09
+Apple Red 1kg,4,2.91,2026-02-09
+Skim Milk 1L,2,1.88,2026-02-09
+Apple Red 1kg,1,3.06,2026-02-09
+Tomato 1kg,2,1.95,2026-02-09
+Chocolate Bar 100g,1,1.51,2026-02-09
+Potato Chips 150g,3,1.98,2026-02-09
+Potato 2kg,1,2.47,2026-02-09
+Onion 1kg,1,1.27,2026-02-09
+Banana 1kg,4,1.49,2026-02-09
+Potato Chips 150g,3,1.94,2026-02-09
+Lettuce,2,1.31,2026-02-09
+Whole Milk 1L,3,1.97,2026-02-09
+Eggs 12-pack,1,3.99,2026-02-09
+Carrot 1kg,4,1.17,2026-02-09
+Ground Beef 500g,3,4.86,2026-02-09
+Eggs 12-pack,1,3.97,2026-02-09
+White Rice 1kg,4,2.55,2026-02-09
+Coca-Cola 1.5L,3,2.3,2026-02-09
+Chocolate Bar 100g,3,1.46,2026-02-09
+Onion 1kg,4,1.32,2026-02-09
+White Bread,3,1.46,2026-02-09
+Whole Milk 1L,1,1.96,2026-02-09
+Chicken Breast 500g,3,6.09,2026-02-10
+Tomato 1kg,1,1.99,2026-02-10
+Banana 1kg,1,1.49,2026-02-10
+Apple Red 1kg,2,3.06,2026-02-10
+Apple Red 1kg,2,2.94,2026-02-10
+Broccoli,2,1.76,2026-02-10
+Orange Juice 1L,2,3.01,2026-02-10
+Whole Wheat Bread,4,1.75,2026-02-10
+Coca-Cola 1.5L,3,2.34,2026-02-10
+Cheddar Cheese 200g,3,3.42,2026-02-10
+Orange Juice 1L,1,2.98,2026-02-10
+Toilet Paper 4-roll,3,3.04,2026-02-10
+Apple Red 1kg,1,2.96,2026-02-10
+Whole Milk 1L,1,2.0,2026-02-10
+Tomato 1kg,4,1.99,2026-02-10
+Banana 1kg,1,1.49,2026-02-10
+Orange Juice 1L,2,2.96,2026-02-10
+Chicken Breast 500g,3,6.16,2026-02-10
+Broccoli,1,1.79,2026-02-10
+Onion 1kg,2,1.25,2026-02-10
+Olive Oil 500ml,4,5.65,2026-02-10
+Tomato 1kg,4,1.98,2026-02-10
+Frozen Pizza,3,4.54,2026-02-10
+Skim Milk 1L,3,1.86,2026-02-11
+Skim Milk 1L,2,1.87,2026-02-11
+Coca-Cola 1.5L,2,2.35,2026-02-11
+Broccoli,1,1.77,2026-02-11
+Sparkling Water 1.5L,4,1.0,2026-02-11
+Tomato 1kg,3,2.03,2026-02-11
+Orange Juice 1L,4,2.99,2026-02-11
+Tomato 1kg,2,2.04,2026-02-11
+Whole Wheat Bread,1,1.75,2026-02-12
+Toilet Paper 4-roll,1,3.02,2026-02-12
+White Bread,2,1.51,2026-02-12
+Banana 1kg,2,1.46,2026-02-12
+Chocolate Bar 100g,3,1.51,2026-02-12
+Whole Milk 1L,2,2.05,2026-02-12
+Potato Chips 150g,2,1.97,2026-02-12
+Canned Tuna 150g,4,1.32,2026-02-12
+Eggs 12-pack,2,3.96,2026-02-12
+Potato 2kg,2,2.54,2026-02-12
+Banana 1kg,2,1.52,2026-02-12
+Tomato 1kg,1,2.01,2026-02-12
+Ground Beef 500g,3,5.01,2026-02-12
+Chocolate Bar 100g,1,1.47,2026-02-12
+Banana 1kg,2,1.52,2026-02-12
+Coffee Ground 250g,1,5.12,2026-02-12
+Cheddar Cheese 200g,3,3.43,2026-02-13
+Carrot 1kg,1,1.18,2026-02-13
+Onion 1kg,1,1.28,2026-02-13
+Tomato 1kg,1,2.03,2026-02-13
+Canned Tuna 150g,4,1.31,2026-02-13
+White Bread,2,1.52,2026-02-13
+Banana 1kg,4,1.49,2026-02-13
+Coffee Ground 250g,1,4.92,2026-02-13
+Ground Beef 500g,4,4.87,2026-02-13
+Chocolate Bar 100g,3,1.47,2026-02-13
+Whole Milk 1L,4,2.01,2026-02-13
+Skim Milk 1L,2,1.91,2026-02-14
+Cornflakes 500g,3,2.98,2026-02-14
+Chicken Breast 500g,3,5.9,2026-02-14
+Ground Beef 500g,4,4.9,2026-02-14
+Chicken Breast 500g,3,5.83,2026-02-14
+Tomato 1kg,4,1.94,2026-02-14
+Lettuce,3,1.27,2026-02-14
+Eggs 12-pack,1,4.05,2026-02-14
+Whole Milk 1L,3,1.95,2026-02-14
+Canned Tuna 150g,3,1.29,2026-02-14
+Cornflakes 500g,4,3.01,2026-02-14
+Coca-Cola 1.5L,2,2.23,2026-02-14
+Whole Milk 1L,3,2.04,2026-02-14
+Whole Wheat Bread,4,1.8,2026-02-14
+Canned Tuna 150g,4,1.27,2026-02-14
+Cheddar Cheese 200g,2,3.45,2026-02-14
+Butter 250g,3,2.95,2026-02-14
+Onion 1kg,4,1.28,2026-02-14
+Tomato 1kg,2,1.99,2026-02-14
+Onion 1kg,4,1.28,2026-02-14
+Canned Tuna 150g,2,1.29,2026-02-15
+Chocolate Bar 100g,3,1.45,2026-02-15
+Skim Milk 1L,3,1.91,2026-02-15
+Onion 1kg,4,1.28,2026-02-15
+Chocolate Bar 100g,1,1.51,2026-02-15
+Whole Wheat Bread,3,1.76,2026-02-15
+Banana 1kg,4,1.48,2026-02-15
+Lettuce,2,1.33,2026-02-15
+Carrot 1kg,2,1.21,2026-02-15
+Skim Milk 1L,4,1.84,2026-02-15
+Potato Chips 150g,4,2.04,2026-02-16
+Tomato 1kg,1,2.0,2026-02-16
+Carrot 1kg,3,1.18,2026-02-16
+Tomato 1kg,3,1.96,2026-02-16
+Potato Chips 150g,1,1.93,2026-02-16
+White Rice 1kg,2,2.49,2026-02-16
+Frozen Pizza,2,4.62,2026-02-16
+White Bread,3,1.52,2026-02-16
+Potato Chips 150g,4,1.95,2026-02-16
+Sparkling Water 1.5L,2,1.01,2026-02-16
+Whole Wheat Bread,3,1.77,2026-02-16
+Chocolate Bar 100g,1,1.49,2026-02-16
+Toilet Paper 4-roll,3,3.06,2026-02-16
+Olive Oil 500ml,2,5.56,2026-02-16
+Chicken Breast 500g,2,5.9,2026-02-17
+White Bread,4,1.46,2026-02-17
+Whole Wheat Bread,3,1.75,2026-02-17
+Pasta Spaghetti 500g,3,1.48,2026-02-17
+Skim Milk 1L,4,1.89,2026-02-17
+Cornflakes 500g,4,2.98,2026-02-17
+Skim Milk 1L,3,1.85,2026-02-17
+Lettuce,2,1.31,2026-02-17
+Orange Juice 1L,2,2.98,2026-02-17
+Cornflakes 500g,2,2.95,2026-02-17
+Apple Red 1kg,3,3.07,2026-02-17
+Chocolate Bar 100g,3,1.52,2026-02-17
+Orange Juice 1L,2,3.01,2026-02-18
+Ground Beef 500g,1,4.99,2026-02-18
+Pasta Spaghetti 500g,2,1.5,2026-02-18
+White Rice 1kg,3,2.54,2026-02-18
+Cornflakes 500g,1,2.91,2026-02-18
+Orange Juice 1L,1,2.99,2026-02-18
+Potato Chips 150g,3,2.01,2026-02-18
+Onion 1kg,3,1.29,2026-02-18
+Banana 1kg,4,1.49,2026-02-18
+Skim Milk 1L,3,1.9,2026-02-18
+Skim Milk 1L,3,1.93,2026-02-18
+Onion 1kg,3,1.31,2026-02-18
+Lettuce,1,1.28,2026-02-18
+White Bread,4,1.47,2026-02-18
+Tomato 1kg,4,1.96,2026-02-18
+Banana 1kg,4,1.52,2026-02-19
+Eggs 12-pack,3,3.92,2026-02-19
+Butter 250g,2,2.99,2026-02-19
+White Bread,4,1.5,2026-02-19
+Apple Red 1kg,3,2.99,2026-02-19
+Carrot 1kg,4,1.22,2026-02-19
+White Rice 1kg,3,2.49,2026-02-19
+Whole Milk 1L,4,1.96,2026-02-19
+Onion 1kg,3,1.31,2026-02-20
+Tomato 1kg,3,1.94,2026-02-20
+Tomato 1kg,4,2.02,2026-02-20
+White Rice 1kg,3,2.54,2026-02-20
+Whole Wheat Bread,1,1.71,2026-02-20
+Tomato 1kg,3,2.0,2026-02-20
+Potato Chips 150g,1,1.94,2026-02-20
+Whole Wheat Bread,2,1.77,2026-02-20
+Chicken Breast 500g,4,6.0,2026-02-20
+Apple Red 1kg,2,2.97,2026-02-21
+Pasta Spaghetti 500g,3,1.5,2026-02-21
+Chocolate Bar 100g,1,1.53,2026-02-21
+Banana 1kg,3,1.52,2026-02-21
+Olive Oil 500ml,1,5.52,2026-02-21
+Tomato 1kg,3,2.05,2026-02-21
+Chocolate Bar 100g,2,1.49,2026-02-21
+White Rice 1kg,4,2.44,2026-02-21
+Whole Milk 1L,1,1.95,2026-02-21
+Carrot 1kg,4,1.18,2026-02-21
+Onion 1kg,4,1.32,2026-02-21
+Whole Wheat Bread,1,1.77,2026-02-21
+White Rice 1kg,4,2.49,2026-02-22
+Toilet Paper 4-roll,3,3.07,2026-02-22
+Coffee Ground 250g,3,5.02,2026-02-22
+Apple Red 1kg,2,3.07,2026-02-22
+Apple Red 1kg,3,3.0,2026-02-22
+Potato Chips 150g,2,2.04,2026-02-22
+Potato Chips 150g,4,1.97,2026-02-22
+Sparkling Water 1.5L,3,0.99,2026-02-22
+Sparkling Water 1.5L,3,0.98,2026-02-22
+Coffee Ground 250g,2,4.93,2026-02-23
+Tomato 1kg,3,2.04,2026-02-23
+Apple Red 1kg,1,2.96,2026-02-23
+Potato Chips 150g,4,2.01,2026-02-23
+Eggs 12-pack,3,3.9,2026-02-23
+Cornflakes 500g,2,2.94,2026-02-23
+Banana 1kg,2,1.5,2026-02-23
+White Rice 1kg,1,2.43,2026-02-23
+Chocolate Bar 100g,1,1.53,2026-02-23
+White Bread,2,1.49,2026-02-23
+Potato Chips 150g,4,1.99,2026-02-23
+Potato Chips 150g,3,2.01,2026-02-23
+Banana 1kg,1,1.5,2026-02-23
+Ground Beef 500g,1,5.11,2026-02-23
+Chocolate Bar 100g,2,1.48,2026-02-23
+Carrot 1kg,4,1.21,2026-02-23
+Whole Milk 1L,2,2.04,2026-02-23
+Cheddar Cheese 200g,1,3.58,2026-02-23
+Whole Milk 1L,3,1.96,2026-02-23
+White Rice 1kg,4,2.55,2026-02-23
+Butter 250g,2,3.05,2026-02-23
+Potato 2kg,3,2.44,2026-02-23
+Chocolate Bar 100g,3,1.5,2026-02-24
+Whole Milk 1L,2,1.95,2026-02-24
+Apple Red 1kg,4,3.05,2026-02-24
+Skim Milk 1L,2,1.89,2026-02-24
+Coca-Cola 1.5L,2,2.22,2026-02-24
+Whole Wheat Bread,4,1.72,2026-02-24
+Carrot 1kg,1,1.17,2026-02-24
+Banana 1kg,3,1.51,2026-02-24
+Chocolate Bar 100g,1,1.51,2026-02-24
+Banana 1kg,3,1.51,2026-02-24
+Tomato 1kg,3,1.97,2026-02-24
+Chicken Breast 500g,2,5.89,2026-02-24
+Coffee Ground 250g,2,4.98,2026-02-24
+Chocolate Bar 100g,4,1.51,2026-02-24
+Pasta Spaghetti 500g,2,1.51,2026-02-24
+Onion 1kg,1,1.29,2026-02-24
+Ground Beef 500g,3,4.86,2026-02-24
+Skim Milk 1L,2,1.9,2026-02-24
+Whole Wheat Bread,4,1.71,2026-02-24
+Butter 250g,2,3.03,2026-02-24
+Coffee Ground 250g,4,5.08,2026-02-25
+White Bread,3,1.52,2026-02-25
+Onion 1kg,4,1.27,2026-02-25
+White Rice 1kg,1,2.53,2026-02-25
+White Rice 1kg,1,2.42,2026-02-25
+Sparkling Water 1.5L,1,1.02,2026-02-25
+Ground Beef 500g,4,4.85,2026-02-25
+Skim Milk 1L,4,1.85,2026-02-25
+Potato Chips 150g,4,1.98,2026-02-25
+Lettuce,4,1.29,2026-02-25
+Tomato 1kg,3,1.94,2026-02-25
+Coca-Cola 1.5L,4,2.29,2026-02-25
+Coca-Cola 1.5L,2,2.34,2026-02-25
+Ground Beef 500g,1,5.13,2026-02-25
+Coca-Cola 1.5L,2,2.28,2026-02-25
+Ground Beef 500g,2,4.92,2026-02-25
+Ground Beef 500g,1,4.85,2026-02-25
+Cornflakes 500g,4,3.01,2026-02-25
+Eggs 12-pack,1,3.89,2026-02-25
+Pasta Spaghetti 500g,4,1.48,2026-02-26
+Sparkling Water 1.5L,2,1.01,2026-02-26
+Whole Milk 1L,1,1.95,2026-02-26
+Chocolate Bar 100g,3,1.47,2026-02-26
+White Rice 1kg,2,2.46,2026-02-26
+Potato Chips 150g,2,2.05,2026-02-26
+Cornflakes 500g,2,2.97,2026-02-26
+Skim Milk 1L,2,1.9,2026-02-26
+Carrot 1kg,4,1.19,2026-02-26
+Cheddar Cheese 200g,1,3.59,2026-02-26
+Canned Tuna 150g,4,1.27,2026-02-26
+Apple Red 1kg,4,2.94,2026-02-26
+Onion 1kg,2,1.27,2026-02-26
+White Bread,2,1.53,2026-02-26
+Broccoli,2,1.77,2026-02-27
+White Rice 1kg,1,2.55,2026-02-27
+White Bread,3,1.46,2026-02-27
+Eggs 12-pack,2,3.88,2026-02-27
+Coca-Cola 1.5L,2,2.29,2026-02-27
+Pasta Spaghetti 500g,3,1.47,2026-02-27
+Cheddar Cheese 200g,1,3.43,2026-02-27
+Whole Wheat Bread,2,1.8,2026-02-27
+Chocolate Bar 100g,4,1.53,2026-02-27
+Tomato 1kg,3,2.02,2026-02-27
+Eggs 12-pack,4,3.98,2026-02-27
+Banana 1kg,1,1.52,2026-02-28
+Chicken Breast 500g,4,6.08,2026-02-28
+Chicken Breast 500g,3,6.14,2026-02-28
+Banana 1kg,2,1.45,2026-02-28
+Whole Milk 1L,4,1.97,2026-02-28
+Butter 250g,2,2.96,2026-02-28
+White Rice 1kg,3,2.45,2026-02-28
+Eggs 12-pack,4,4.1,2026-02-28
+Ground Beef 500g,4,4.98,2026-02-28
+Carrot 1kg,3,1.17,2026-02-28
+Whole Wheat Bread,1,1.79,2026-02-28
+Cheddar Cheese 200g,1,3.58,2026-02-28
+Toilet Paper 4-roll,1,3.04,2026-02-28
+Broccoli,4,1.75,2026-02-28
+Skim Milk 1L,2,1.89,2026-02-28
+White Bread,3,1.46,2026-02-28
+Coca-Cola 1.5L,1,2.29,2026-02-28
+Whole Milk 1L,3,1.99,2026-02-28
+Ground Beef 500g,3,4.85,2026-02-28
+Onion 1kg,4,1.31,2026-02-28
+Frozen Pizza,2,4.42,2026-03-01
+Olive Oil 500ml,3,5.64,2026-03-02
+Banana 1kg,4,1.5,2026-03-02
+Tomato 1kg,2,1.97,2026-03-02
+Orange Juice 1L,1,2.92,2026-03-02
+Tomato 1kg,1,1.99,2026-03-02
+Potato 2kg,4,2.51,2026-03-02
+Orange Juice 1L,3,3.0,2026-03-02
+Sparkling Water 1.5L,1,1.01,2026-03-02
+Eggs 12-pack,4,3.94,2026-03-02
+Coca-Cola 1.5L,3,2.34,2026-03-02
+Whole Wheat Bread,3,1.7,2026-03-02
+White Rice 1kg,4,2.55,2026-03-02
+Potato Chips 150g,3,1.95,2026-03-02
+White Rice 1kg,3,2.47,2026-03-02
+Butter 250g,2,3.04,2026-03-02
+Whole Milk 1L,3,2.0,2026-03-03
+Onion 1kg,4,1.33,2026-03-03
+Cornflakes 500g,3,2.91,2026-03-03
+Canned Tuna 150g,4,1.28,2026-03-03
+Onion 1kg,4,1.26,2026-03-03
+Eggs 12-pack,3,4.06,2026-03-03
+Skim Milk 1L,2,1.88,2026-03-03
+Chocolate Bar 100g,1,1.45,2026-03-03
+Apple Red 1kg,3,2.98,2026-03-03
+White Bread,2,1.49,2026-03-04
+White Bread,3,1.53,2026-03-04
+Skim Milk 1L,1,1.87,2026-03-04
+Ground Beef 500g,4,5.07,2026-03-04
+Pasta Spaghetti 500g,2,1.5,2026-03-04
+Coca-Cola 1.5L,3,2.26,2026-03-04
+Whole Wheat Bread,4,1.71,2026-03-04
+Onion 1kg,4,1.31,2026-03-04
+Onion 1kg,3,1.27,2026-03-04
+Chocolate Bar 100g,2,1.49,2026-03-04
+Chicken Breast 500g,2,5.92,2026-03-04
+Apple Red 1kg,3,2.98,2026-03-04
+Pasta Spaghetti 500g,2,1.47,2026-03-04
+Olive Oil 500ml,2,5.48,2026-03-04
+Apple Red 1kg,2,3.07,2026-03-04
+Chocolate Bar 100g,2,1.47,2026-03-05
+Orange Juice 1L,3,3.05,2026-03-05
+Broccoli,4,1.78,2026-03-05
+Pasta Spaghetti 500g,1,1.53,2026-03-05
+Ground Beef 500g,4,5.12,2026-03-05
+Onion 1kg,1,1.31,2026-03-05
+Banana 1kg,4,1.51,2026-03-05
+Orange Juice 1L,2,3.03,2026-03-05
+Eggs 12-pack,4,3.89,2026-03-05
+White Rice 1kg,4,2.5,2026-03-05
+Ground Beef 500g,3,5.05,2026-03-05
+Frozen Pizza,1,4.38,2026-03-05
+Cheddar Cheese 200g,2,3.52,2026-03-05
+Whole Wheat Bread,4,1.8,2026-03-05
+Pasta Spaghetti 500g,3,1.53,2026-03-05
+White Rice 1kg,4,2.43,2026-03-05
+Eggs 12-pack,2,3.98,2026-03-06
+Chocolate Bar 100g,4,1.49,2026-03-06
+White Rice 1kg,2,2.47,2026-03-06
+Potato 2kg,3,2.48,2026-03-06
+White Bread,2,1.49,2026-03-06
+Potato 2kg,4,2.43,2026-03-06
+Eggs 12-pack,4,3.95,2026-03-06
+Potato 2kg,3,2.42,2026-03-06
+Butter 250g,1,3.02,2026-03-07
+Carrot 1kg,2,1.19,2026-03-07
+Chocolate Bar 100g,3,1.5,2026-03-07
+Eggs 12-pack,4,3.97,2026-03-07
+Tomato 1kg,2,1.98,2026-03-07
+Whole Wheat Bread,4,1.74,2026-03-07
+Orange Juice 1L,2,2.94,2026-03-07
+White Rice 1kg,2,2.47,2026-03-07
+White Bread,3,1.51,2026-03-08
+Coca-Cola 1.5L,4,2.3,2026-03-08
+Chicken Breast 500g,3,5.94,2026-03-08
+Broccoli,4,1.8,2026-03-08
+Coca-Cola 1.5L,3,2.24,2026-03-09
+White Bread,4,1.49,2026-03-09
+Tomato 1kg,2,2.0,2026-03-09
+White Bread,4,1.47,2026-03-09
+White Rice 1kg,2,2.44,2026-03-09
+Chicken Breast 500g,4,6.03,2026-03-09
+Carrot 1kg,4,1.22,2026-03-09
+Potato 2kg,4,2.48,2026-03-09
+Whole Wheat Bread,4,1.74,2026-03-09
+Potato 2kg,3,2.42,2026-03-09
+Skim Milk 1L,2,1.89,2026-03-09
+Whole Milk 1L,2,2.02,2026-03-09
+Potato Chips 150g,4,2.0,2026-03-09
+White Rice 1kg,3,2.53,2026-03-09
+Potato Chips 150g,4,2.0,2026-03-10
+White Bread,1,1.5,2026-03-10
+Cornflakes 500g,3,3.05,2026-03-10
+Chocolate Bar 100g,1,1.48,2026-03-10
+Banana 1kg,1,1.51,2026-03-10
+Eggs 12-pack,3,4.08,2026-03-10
+Chocolate Bar 100g,4,1.46,2026-03-10
+Canned Tuna 150g,1,1.3,2026-03-10
+Olive Oil 500ml,3,5.52,2026-03-10
+Apple Red 1kg,3,3.0,2026-03-10
+Sparkling Water 1.5L,1,0.97,2026-03-10
+Frozen Pizza,2,4.42,2026-03-10
+Toilet Paper 4-roll,3,3.05,2026-03-10
+Butter 250g,4,2.99,2026-03-10
+White Bread,3,1.51,2026-03-10
+Skim Milk 1L,3,1.91,2026-03-11
+Canned Tuna 150g,3,1.29,2026-03-11
+Potato Chips 150g,4,1.97,2026-03-11
+Tomato 1kg,1,2.03,2026-03-11
+Chocolate Bar 100g,4,1.5,2026-03-11
+Butter 250g,4,3.05,2026-03-11
+Canned Tuna 150g,4,1.27,2026-03-11
+Tomato 1kg,3,1.97,2026-03-11
+White Rice 1kg,3,2.55,2026-03-11
+Potato 2kg,1,2.42,2026-03-11
+Whole Milk 1L,4,1.95,2026-03-11
+Carrot 1kg,2,1.22,2026-03-11
+White Bread,3,1.47,2026-03-11
+Potato 2kg,3,2.43,2026-03-11
+Eggs 12-pack,2,3.88,2026-03-11
+Tomato 1kg,3,2.02,2026-03-11
+Coffee Ground 250g,2,4.97,2026-03-11
+Sparkling Water 1.5L,1,0.97,2026-03-11
+Pasta Spaghetti 500g,4,1.45,2026-03-12
+Chicken Breast 500g,3,6.1,2026-03-12
+Sparkling Water 1.5L,1,0.97,2026-03-12
+Potato 2kg,3,2.55,2026-03-12
+Eggs 12-pack,2,3.96,2026-03-12
+Skim Milk 1L,2,1.91,2026-03-12
+Skim Milk 1L,2,1.88,2026-03-12
+White Rice 1kg,2,2.51,2026-03-12
+Frozen Pizza,4,4.59,2026-03-12
+Pasta Spaghetti 500g,1,1.53,2026-03-12
+White Rice 1kg,4,2.47,2026-03-13
+Apple Red 1kg,3,3.04,2026-03-13
+White Bread,1,1.53,2026-03-13
+Banana 1kg,3,1.46,2026-03-13
+Skim Milk 1L,2,1.92,2026-03-13
+Orange Juice 1L,2,2.99,2026-03-13
+Canned Tuna 150g,1,1.27,2026-03-13
+Canned Tuna 150g,1,1.29,2026-03-13
+Toilet Paper 4-roll,3,2.92,2026-03-13
+Tomato 1kg,1,1.93,2026-03-13
+Coca-Cola 1.5L,1,2.22,2026-03-13
+Potato Chips 150g,2,1.94,2026-03-13
+Carrot 1kg,1,1.22,2026-03-13
+Orange Juice 1L,4,2.92,2026-03-14
+Chicken Breast 500g,2,5.91,2026-03-14
+Onion 1kg,3,1.26,2026-03-14
+Lettuce,3,1.28,2026-03-14
+White Bread,1,1.48,2026-03-14
+Chocolate Bar 100g,4,1.46,2026-03-14
+Butter 250g,1,2.96,2026-03-14
+Whole Milk 1L,2,1.94,2026-03-14
+Skim Milk 1L,2,1.91,2026-03-14
+Chicken Breast 500g,3,5.87,2026-03-14
+Apple Red 1kg,2,3.03,2026-03-14
+Chocolate Bar 100g,3,1.52,2026-03-14
+White Bread,3,1.5,2026-03-14
+Coffee Ground 250g,3,5.05,2026-03-14
+Chicken Breast 500g,3,5.83,2026-03-14
+Tomato 1kg,1,2.04,2026-03-14
+Eggs 12-pack,1,3.92,2026-03-14
