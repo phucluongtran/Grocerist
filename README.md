@@ -1,4 +1,4 @@
-# Grocerist v2
+# Grocerist
 
 Grocery store management app — Dashboard, Inventory, Sales & Forecasting, Customers & Promotions.
 
