@@ -40,21 +40,21 @@ router.post('/products', upload.single('file'), async (req: AuthRequest, res: Re
     await client.query('BEGIN');
     for (const row of rows) {
       const name = col(row, 'name', 'productname', 'product');
-      const price = parseFloat(col(row, 'price', 'cost', 'saleprice') || '0');
+      const price = parseFloat(col(row, 'price', 'saleprice') || '0');
       if (!name || isNaN(price) || price <= 0) { skipped++; continue; }
       const category = col(row, 'category', 'type', 'department');
       const sku = col(row, 'sku', 'barcode', 'code', 'id');
-      const unit = col(row, 'unit', 'uom', 'measure') || 'each';
+      const cost = parseFloat(col(row, 'cost', 'costprice') || '0') || null;
       const prod = await client.query(
-        `INSERT INTO products (name, category, sku, price, unit)
+        `INSERT INTO app.products (name, category, sku, price, cost)
          VALUES ($1,$2,$3,$4,$5)
-         ON CONFLICT (sku) DO UPDATE SET name=$1, category=$2, price=$4, unit=$5
+         ON CONFLICT (sku) DO UPDATE SET name=$1, category=$2, price=$4, cost=$5
          RETURNING id`,
-        [name, category || null, sku || null, price, unit]
+        [name, category || null, sku || null, price, cost]
       );
       await client.query(
-        `INSERT INTO inventory (product_id, quantity, low_stock_threshold)
-         VALUES ($1, 0, 10)
+        `INSERT INTO app.inventory (product_id, stock)
+         VALUES ($1, 0)
          ON CONFLICT (product_id) DO NOTHING`,
         [prod.rows[0].id]
       );
@@ -77,20 +77,26 @@ router.post('/inventory', upload.single('file'), async (req: AuthRequest, res: R
   let imported = 0, skipped = 0;
   for (const row of rows) {
     const nameOrSku = col(row, 'productname', 'name', 'product', 'sku', 'barcode', 'code');
-    const quantity = parseInt(col(row, 'quantity', 'qty', 'stock', 'stocklevel') || '-1');
-    if (!nameOrSku || quantity < 0) { skipped++; continue; }
-    const threshold = parseInt(col(row, 'threshold', 'minstockthreshold', 'lowstockthreshold', 'minqty') || '10');
+    const stock = parseInt(col(row, 'stock', 'quantity', 'qty', 'stocklevel') || '-1');
+    if (!nameOrSku || stock < 0) { skipped++; continue; }
     // find product by name or sku
     const prod = await pool.query(
-      `SELECT id FROM products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
+      `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
       [nameOrSku]
     );
     if (!prod.rows[0]) { skipped++; continue; }
+    const threshold = parseInt(col(row, 'threshold', 'minstockthreshold', 'lowstockthreshold', 'minqty') || '');
+    if (!isNaN(threshold) && threshold >= 0) {
+      await pool.query(
+        `UPDATE app.products SET low_stock_threshold=$1 WHERE id=$2`,
+        [threshold, prod.rows[0].id]
+      );
+    }
     await pool.query(
-      `INSERT INTO inventory (product_id, quantity, low_stock_threshold)
-       VALUES ($1,$2,$3)
-       ON CONFLICT (product_id) DO UPDATE SET quantity=$2, low_stock_threshold=$3, updated_at=NOW()`,
-      [prod.rows[0].id, quantity, isNaN(threshold) ? 10 : threshold]
+      `INSERT INTO app.inventory (product_id, stock)
+       VALUES ($1,$2)
+       ON CONFLICT (product_id) DO UPDATE SET stock=$2, last_updated=NOW()`,
+      [prod.rows[0].id, stock]
     );
     imported++;
   }
@@ -107,10 +113,10 @@ router.post('/customers', upload.single('file'), async (req: AuthRequest, res: R
     if (!name) { skipped++; continue; }
     const email = col(row, 'email', 'emailaddress', 'mail');
     const phone = col(row, 'phone', 'phonenumber', 'mobile', 'tel');
-    const notes = col(row, 'notes', 'note', 'comments', 'comment');
+    const loyaltyPoints = parseInt(col(row, 'loyaltypoints', 'loyalty', 'points') || '0') || 0;
     await pool.query(
-      `INSERT INTO customers (name, email, phone, notes) VALUES ($1,$2,$3,$4)`,
-      [name, email || null, phone || null, notes || null]
+      `INSERT INTO app.customers (name, email, phone, loyalty_points) VALUES ($1,$2,$3,$4)`,
+      [name, email || null, phone || null, loyaltyPoints]
     );
     imported++;
   }
@@ -127,16 +133,16 @@ router.post('/sales', upload.single('file'), async (req: AuthRequest, res: Respo
     const quantity = parseInt(col(row, 'quantity', 'qty', 'units') || '0');
     const salePrice = parseFloat(col(row, 'saleprice', 'price', 'unitprice', 'amount') || '0');
     if (!nameOrSku || quantity <= 0 || isNaN(salePrice) || salePrice <= 0) { skipped++; continue; }
-    const soldAt = col(row, 'soldat', 'date', 'saledate', 'datetime', 'timestamp');
+    const createdAt = col(row, 'createdat', 'soldat', 'date', 'saledate', 'datetime', 'timestamp');
     const prod = await pool.query(
-      `SELECT id FROM products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
+      `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
       [nameOrSku]
     );
     if (!prod.rows[0]) { skipped++; continue; }
     await pool.query(
-      `INSERT INTO sales (product_id, quantity, sale_price, sold_at)
+      `INSERT INTO app.sales (product_id, quantity, sale_price, created_at)
        VALUES ($1,$2,$3,$4)`,
-      [prod.rows[0].id, quantity, salePrice, soldAt ? new Date(soldAt) : new Date()]
+      [prod.rows[0].id, quantity, salePrice, createdAt ? new Date(createdAt) : new Date()]
     );
     imported++;
   }

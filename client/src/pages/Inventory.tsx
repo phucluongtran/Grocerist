@@ -10,8 +10,8 @@ interface InventoryItem {
   category: string;
   sku: string;
   price: string;
-  unit: string;
-  quantity: number;
+  cost: string;
+  stock: number;
   low_stock_threshold: number;
   low_stock: boolean;
 }
@@ -21,10 +21,11 @@ interface ProductFormData {
   category: string;
   sku: string;
   price: string;
-  unit: string;
+  cost: string;
+  low_stock_threshold: string;
 }
 
-const defaultForm: ProductFormData = { name: '', category: '', sku: '', price: '', unit: 'each' };
+const defaultForm: ProductFormData = { name: '', category: '', sku: '', price: '', cost: '', low_stock_threshold: '10' };
 
 export default function Inventory() {
   const { user } = useAuthContext();
@@ -63,7 +64,14 @@ export default function Inventory() {
   }
 
   function openEdit(item: InventoryItem) {
-    setForm({ name: item.name, category: item.category, sku: item.sku, price: item.price, unit: item.unit });
+    setForm({
+      name: item.name,
+      category: item.category,
+      sku: item.sku,
+      price: item.price,
+      cost: item.cost ?? '',
+      low_stock_threshold: String(item.low_stock_threshold),
+    });
     setEditId(item.product_id);
     setShowForm(true);
   }
@@ -76,7 +84,7 @@ export default function Inventory() {
 
   async function saveQty(item: InventoryItem) {
     if (!editQty) return;
-    await api.put(`/inventory/${item.product_id}`, { quantity: parseInt(editQty.val) });
+    await api.put(`/inventory/${item.product_id}`, { stock: parseInt(editQty.val) });
     setEditQty(null);
     fetchInventory();
   }
@@ -109,7 +117,7 @@ export default function Inventory() {
           <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md">
             <h3 className="font-semibold text-lg mb-4">{editId ? 'Edit Product' : 'New Product'}</h3>
             <form onSubmit={handleSubmit} className="space-y-3">
-              {(['name', 'category', 'sku', 'unit'] as const).map((field) => (
+              {(['name', 'category', 'sku'] as const).map((field) => (
                 <div key={field}>
                   <label className="block text-sm font-medium text-gray-700 mb-1 capitalize">{field}</label>
                   <input
@@ -126,6 +134,25 @@ export default function Inventory() {
                   type="number" step="0.01" min="0"
                   value={form.price}
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
+                  required
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Cost ($)</label>
+                <input
+                  type="number" step="0.01" min="0"
+                  value={form.cost}
+                  onChange={(e) => setForm({ ...form, cost: e.target.value })}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Low Stock Threshold</label>
+                <input
+                  type="number" min="0"
+                  value={form.low_stock_threshold}
+                  onChange={(e) => setForm({ ...form, low_stock_threshold: e.target.value })}
                   required
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
@@ -181,10 +208,10 @@ export default function Inventory() {
                     </span>
                   ) : (
                     <button
-                      onClick={() => setEditQty({ id: item.product_id, val: String(item.quantity) })}
+                      onClick={() => setEditQty({ id: item.product_id, val: String(item.stock) })}
                       className={`font-medium ${item.low_stock ? 'text-red-600' : 'text-gray-900'} hover:underline`}
                     >
-                      {item.quantity} {item.unit}
+                      {item.stock}
                     </button>
                   )}
                 </td>

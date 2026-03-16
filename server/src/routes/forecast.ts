@@ -10,10 +10,10 @@ router.get('/:productId', async (req: Request, res: Response) => {
 
   // Past 28 days of actual daily sales
   const actual = await pool.query(
-    `SELECT sold_at::date AS date, SUM(quantity) AS qty
-     FROM sales
-     WHERE product_id = $1 AND sold_at >= NOW() - INTERVAL '28 days'
-     GROUP BY sold_at::date
+    `SELECT created_at::date AS date, SUM(quantity) AS qty
+     FROM app.sales
+     WHERE product_id = $1 AND created_at >= NOW() - INTERVAL '28 days'
+     GROUP BY created_at::date
      ORDER BY date ASC`,
     [productId]
   );

@@ -7,7 +7,7 @@ import {
 import api from '../lib/api';
 import { formatCurrency, formatDate } from '../lib/utils';
 
-interface Sale { id: number; product_name: string; quantity: number; sale_price: string; sold_at: string }
+interface Sale { id: number; product_name: string; quantity: number; sale_price: string; created_at: string }
 interface Product { id: number; name: string; price: string }
 interface ForecastPoint { date: string; qty?: number; predicted_qty?: number }
 
@@ -69,12 +69,12 @@ export default function Sales() {
   const barData = Object.values(
     sales
       .filter((s) => {
-        const d = new Date(s.sold_at);
+        const d = new Date(s.created_at);
         const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 30);
         return d >= cutoff;
       })
       .reduce<Record<string, { date: string; revenue: number }>>((acc, s) => {
-        const date = formatDate(s.sold_at);
+        const date = formatDate(s.created_at);
         if (!acc[date]) acc[date] = { date, revenue: 0 };
         acc[date].revenue += s.quantity * parseFloat(s.sale_price);
         return acc;
@@ -195,7 +195,7 @@ export default function Sales() {
                 <td className="px-4 py-3 text-right text-gray-600">{s.quantity}</td>
                 <td className="px-4 py-3 text-right text-gray-600">{formatCurrency(s.sale_price)}</td>
                 <td className="px-4 py-3 text-right font-medium text-gray-900">{formatCurrency(s.quantity * parseFloat(s.sale_price))}</td>
-                <td className="px-4 py-3 text-right text-gray-500">{formatDate(s.sold_at)}</td>
+                <td className="px-4 py-3 text-right text-gray-500">{formatDate(s.created_at)}</td>
                 <td className="px-4 py-3 text-right">
                   <button onClick={() => deleteSale(s.id)} className="text-gray-400 hover:text-red-500 transition-colors">
                     <Trash2 size={15} />

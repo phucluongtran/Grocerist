@@ -7,10 +7,10 @@ router.use(requireAuth);
 
 router.get('/', async (_req, res: Response) => {
   const lowStock = await pool.query(
-    `SELECT p.name, i.quantity, i.low_stock_threshold
-     FROM inventory i JOIN products p ON p.id = i.product_id
-     WHERE i.quantity <= i.low_stock_threshold
-     ORDER BY i.quantity ASC`
+    `SELECT p.name, i.stock, p.low_stock_threshold
+     FROM app.inventory i JOIN app.products p ON p.id = i.product_id
+     WHERE i.stock <= p.low_stock_threshold
+     ORDER BY i.stock ASC`
   );
   res.json({
     low_stock: lowStock.rows,

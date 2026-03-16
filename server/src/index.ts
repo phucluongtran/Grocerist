@@ -8,10 +8,9 @@ import inventoryRoutes from './routes/inventory';
 import salesRoutes from './routes/sales';
 import forecastRoutes from './routes/forecast';
 import customerRoutes from './routes/customers';
-import promotionRoutes from './routes/promotions';
-import todoRoutes from './routes/todos';
 import alertRoutes from './routes/alerts';
 import importRoutes from './routes/import';
+import etlRoutes from './routes/etl';
 import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
@@ -26,10 +25,9 @@ app.use('/api/inventory', inventoryRoutes);
 app.use('/api/sales', salesRoutes);
 app.use('/api/forecast', forecastRoutes);
 app.use('/api/customers', customerRoutes);
-app.use('/api/promotions', promotionRoutes);
-app.use('/api/todos', todoRoutes);
 app.use('/api/alerts', alertRoutes);
 app.use('/api/import', importRoutes);
+app.use('/api/etl', etlRoutes);
 
 app.use(errorHandler);
 

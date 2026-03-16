@@ -12,7 +12,7 @@ router.post('/login', async (req: Request, res: Response) => {
     res.status(400).json({ error: 'Email and password required' });
     return;
   }
-  const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+  const result = await pool.query('SELECT * FROM app.users WHERE email = $1', [email]);
   const user = result.rows[0];
   if (!user || !(await bcrypt.compare(password, user.password_hash))) {
     res.status(401).json({ error: 'Invalid credentials' });
@@ -32,15 +32,15 @@ router.get('/me', requireAuth, (req: AuthRequest, res: Response) => {
 
 // Seed route — creates owner account if none exists (dev/setup only)
 router.post('/seed', async (req: Request, res: Response) => {
-  const { email, password, role = 'owner', secret } = req.body;
+  const { name, email, password, role = 'owner', secret } = req.body;
   if (secret !== process.env.SEED_SECRET && process.env.NODE_ENV === 'production') {
     res.status(403).json({ error: 'Forbidden' });
     return;
   }
   const hash = await bcrypt.hash(password, 10);
   const result = await pool.query(
-    'INSERT INTO users (email, password_hash, role) VALUES ($1, $2, $3) RETURNING id, email, role',
-    [email, hash, role]
+    'INSERT INTO app.users (name, email, password_hash, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role',
+    [name || null, email, hash, role]
   );
   res.status(201).json({ user: result.rows[0] });
 });

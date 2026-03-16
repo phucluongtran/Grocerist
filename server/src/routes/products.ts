@@ -7,22 +7,22 @@ router.use(requireAuth);
 
 router.get('/', async (_req, res: Response) => {
   const result = await pool.query(
-    'SELECT * FROM products ORDER BY name ASC'
+    'SELECT * FROM app.products ORDER BY name ASC'
   );
   res.json(result.rows);
 });
 
 router.post('/', requireOwner, async (req: AuthRequest, res: Response) => {
-  const { name, category, sku, price, unit } = req.body;
+  const { name, category, sku, price, cost, low_stock_threshold } = req.body;
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
     const prod = await client.query(
-      'INSERT INTO products (name, category, sku, price, unit) VALUES ($1,$2,$3,$4,$5) RETURNING *',
-      [name, category, sku, price, unit || 'each']
+      'INSERT INTO app.products (name, category, sku, price, cost, low_stock_threshold) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *',
+      [name, category, sku, price, cost || null, low_stock_threshold ?? 10]
     );
     await client.query(
-      'INSERT INTO inventory (product_id, quantity, low_stock_threshold) VALUES ($1, 0, 10)',
+      'INSERT INTO app.inventory (product_id, stock) VALUES ($1, 0)',
       [prod.rows[0].id]
     );
     await client.query('COMMIT');
@@ -36,17 +36,17 @@ router.post('/', requireOwner, async (req: AuthRequest, res: Response) => {
 });
 
 router.put('/:id', requireOwner, async (req: AuthRequest, res: Response) => {
-  const { name, category, sku, price, unit } = req.body;
+  const { name, category, sku, price, cost, low_stock_threshold } = req.body;
   const result = await pool.query(
-    'UPDATE products SET name=$1, category=$2, sku=$3, price=$4, unit=$5 WHERE id=$6 RETURNING *',
-    [name, category, sku, price, unit, req.params.id]
+    'UPDATE app.products SET name=$1, category=$2, sku=$3, price=$4, cost=$5, low_stock_threshold=$6 WHERE id=$7 RETURNING *',
+    [name, category, sku, price, cost ?? null, low_stock_threshold ?? 10, req.params.id]
   );
   if (!result.rows[0]) { res.status(404).json({ error: 'Not found' }); return; }
   res.json(result.rows[0]);
 });
 
 router.delete('/:id', requireOwner, async (req: AuthRequest, res: Response) => {
-  await pool.query('DELETE FROM products WHERE id=$1', [req.params.id]);
+  await pool.query('DELETE FROM app.products WHERE id=$1', [req.params.id]);
   res.status(204).send();
 });
 
