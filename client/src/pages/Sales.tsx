@@ -1,213 +1,154 @@
 import { useEffect, useState } from 'react';
-import { Trash2, Plus } from 'lucide-react';
-import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  LineChart, Line, Legend, CartesianGrid,
-} from 'recharts';
+import { Plus, Minus, Trash2, ShoppingCart } from 'lucide-react';
 import api from '../lib/api';
-import { formatCurrency, formatDate } from '../lib/utils';
+import { formatCurrency } from '../lib/utils';
 
-interface Sale { id: number; product_name: string; quantity: number; sale_price: string; created_at: string }
-interface Product { id: number; name: string; price: string }
-interface ForecastPoint { date: string; qty?: number; predicted_qty?: number }
+interface Product { id: number; name: string; price: string; category: string }
+interface CartItem { product: Product; qty: number }
 
 export default function Sales() {
-  const [sales, setSales] = useState<Sale[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
-  const [form, setForm] = useState({ product_id: '', quantity: '1', sale_price: '' });
-  const [showForm, setShowForm] = useState(false);
-  const [forecastProduct, setForecastProduct] = useState<string>('');
-  const [forecastData, setForecastData] = useState<ForecastPoint[]>([]);
+  const [search, setSearch] = useState('');
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [checking, setChecking] = useState(false);
 
   useEffect(() => {
-    fetchSales();
-    api.get('/products').then((r) => {
-      setProducts(r.data);
-      if (r.data.length) setForecastProduct(String(r.data[0].id));
-    });
+    api.get('/products').then((r) => setProducts(r.data));
   }, []);
 
-  useEffect(() => {
-    if (forecastProduct) fetchForecast(forecastProduct);
-  }, [forecastProduct]);
+  const filtered = products.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase()) ||
+    p.category?.toLowerCase().includes(search.toLowerCase())
+  );
 
-  async function fetchSales() {
-    const r = await api.get('/sales');
-    setSales(r.data);
-  }
-
-  async function fetchForecast(productId: string) {
-    const r = await api.get(`/forecast/${productId}`);
-    const actual = r.data.actual.map((d: { date: string; qty: number }) => ({ date: formatDate(d.date), qty: d.qty }));
-    const forecast = r.data.forecast.map((d: { date: string; predicted_qty: number }) => ({ date: formatDate(d.date), predicted_qty: d.predicted_qty }));
-    setForecastData([...actual, ...forecast]);
-  }
-
-  function selectProduct(id: string) {
-    const p = products.find((x) => String(x.id) === id);
-    setForm((f) => ({ ...f, product_id: id, sale_price: p ? p.price : '' }));
-  }
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    await api.post('/sales', {
-      product_id: parseInt(form.product_id),
-      quantity: parseInt(form.quantity),
-      sale_price: parseFloat(form.sale_price),
+  function addToCart(product: Product) {
+    setCart((prev) => {
+      const existing = prev.find((c) => c.product.id === product.id);
+      if (existing) return prev.map((c) => c.product.id === product.id ? { ...c, qty: c.qty + 1 } : c);
+      return [...prev, { product, qty: 1 }];
     });
-    setShowForm(false);
-    setForm({ product_id: '', quantity: '1', sale_price: '' });
-    fetchSales();
   }
 
-  async function deleteSale(id: number) {
-    await api.delete(`/sales/${id}`);
-    fetchSales();
+  function updateQty(productId: number, delta: number) {
+    setCart((prev) =>
+      prev
+        .map((c) => c.product.id === productId ? { ...c, qty: c.qty + delta } : c)
+        .filter((c) => c.qty > 0)
+    );
   }
 
-  // Build bar chart data: daily revenue last 30 days
-  const barData = Object.values(
-    sales
-      .filter((s) => {
-        const d = new Date(s.created_at);
-        const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 30);
-        return d >= cutoff;
-      })
-      .reduce<Record<string, { date: string; revenue: number }>>((acc, s) => {
-        const date = formatDate(s.created_at);
-        if (!acc[date]) acc[date] = { date, revenue: 0 };
-        acc[date].revenue += s.quantity * parseFloat(s.sale_price);
-        return acc;
-      }, {})
-  ).sort((a, b) => a.date.localeCompare(b.date));
+  function removeFromCart(productId: number) {
+    setCart((prev) => prev.filter((c) => c.product.id !== productId));
+  }
+
+  const total = cart.reduce((sum, c) => sum + c.qty * parseFloat(c.product.price), 0);
+
+  async function checkout() {
+    if (cart.length === 0) return;
+    setChecking(true);
+    try {
+      await Promise.all(
+        cart.map((c) =>
+          api.post('/sales', {
+            product_id: c.product.id,
+            quantity: c.qty,
+            sale_price: parseFloat(c.product.price),
+          })
+        )
+      );
+      setCart([]);
+    } finally {
+      setChecking(false);
+    }
+  }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Sales & Forecasting</h2>
-        <button
-          onClick={() => setShowForm(true)}
-          className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors"
-        >
-          <Plus size={16} /> Record Sale
-        </button>
-      </div>
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold text-gray-900">Point of Sale</h2>
 
-      {/* Sale Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md">
-            <h3 className="font-semibold text-lg mb-4">Record Sale</h3>
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Product</label>
-                <select
-                  value={form.product_id}
-                  onChange={(e) => selectProduct(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
-                  <option value="">Select product</option>
-                  {products.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
-                <input type="number" min="1" value={form.quantity} onChange={(e) => setForm({ ...form, quantity: e.target.value })} required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Sale Price ($)</label>
-                <input type="number" step="0.01" min="0" value={form.sale_price} onChange={(e) => setForm({ ...form, sale_price: e.target.value })} required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
-              </div>
-              <div className="flex gap-3 pt-2">
-                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">Save</button>
-                <button type="button" onClick={() => setShowForm(false)} className="flex-1 border border-gray-300 py-2 rounded-lg text-sm hover:bg-gray-50 transition-colors">Cancel</button>
-              </div>
-            </form>
-          </div>
+      <input
+        type="text"
+        placeholder="Search products…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full max-w-sm border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+
+      <div className="flex gap-4 items-start">
+        {/* Product Grid */}
+        <div className="flex-[3] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {filtered.map((p) => (
+            <button
+              key={p.id}
+              onClick={() => addToCart(p)}
+              className="bg-white border border-gray-200 rounded-xl p-4 text-left hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <p className="font-medium text-gray-900 text-sm leading-tight">{p.name}</p>
+              {p.category && <p className="text-xs text-gray-400 mt-0.5">{p.category}</p>}
+              <p className="text-green-600 font-semibold text-sm mt-2">{formatCurrency(p.price)}</p>
+            </button>
+          ))}
+          {filtered.length === 0 && (
+            <p className="col-span-full text-center py-8 text-gray-400 text-sm">No products found</p>
+          )}
         </div>
-      )}
 
-      {/* Revenue Chart */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
-        <h3 className="font-semibold text-gray-900 mb-4">Daily Revenue (Last 30 Days)</h3>
-        {barData.length > 0 ? (
-          <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={barData}>
-              <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-              <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
-              <Tooltip formatter={(v) => formatCurrency(Number(v))} />
-              <Bar dataKey="revenue" fill="#16a34a" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        ) : <p className="text-sm text-gray-400 text-center py-10">No sales data yet</p>}
-      </div>
-
-      {/* Forecast Chart */}
-      <div className="bg-white rounded-xl border border-gray-200 p-5">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900">7-Day Demand Forecast</h3>
-          <select
-            value={forecastProduct}
-            onChange={(e) => setForecastProduct(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            {products.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
-          </select>
-        </div>
-        {forecastData.length > 0 ? (
-          <ResponsiveContainer width="100%" height={220}>
-            <LineChart data={forecastData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-              <YAxis tick={{ fontSize: 11 }} />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="qty" stroke="#16a34a" name="Actual" dot={false} strokeWidth={2} connectNulls />
-              <Line type="monotone" dataKey="predicted_qty" stroke="#3b82f6" name="Forecast" strokeDasharray="5 5" strokeWidth={2} connectNulls />
-            </LineChart>
-          </ResponsiveContainer>
-        ) : <p className="text-sm text-gray-400 text-center py-10">Select a product to see forecast</p>}
-      </div>
-
-      {/* Sales Table */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <div className="px-4 py-3 border-b border-gray-200">
-          <h3 className="font-semibold text-gray-900">Recent Sales</h3>
-        </div>
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b border-gray-200">
-            <tr>
-              <th className="text-left px-4 py-3 font-medium text-gray-600">Product</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Qty</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Price</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Total</th>
-              <th className="text-right px-4 py-3 font-medium text-gray-600">Date</th>
-              <th className="px-4 py-3"></th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
-            {sales.slice(0, 50).map((s) => (
-              <tr key={s.id} className="hover:bg-gray-50">
-                <td className="px-4 py-3 text-gray-900">{s.product_name}</td>
-                <td className="px-4 py-3 text-right text-gray-600">{s.quantity}</td>
-                <td className="px-4 py-3 text-right text-gray-600">{formatCurrency(s.sale_price)}</td>
-                <td className="px-4 py-3 text-right font-medium text-gray-900">{formatCurrency(s.quantity * parseFloat(s.sale_price))}</td>
-                <td className="px-4 py-3 text-right text-gray-500">{formatDate(s.created_at)}</td>
-                <td className="px-4 py-3 text-right">
-                  <button onClick={() => deleteSale(s.id)} className="text-gray-400 hover:text-red-500 transition-colors">
-                    <Trash2 size={15} />
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {sales.length === 0 && (
-              <tr><td colSpan={6} className="text-center py-8 text-gray-400">No sales recorded</td></tr>
+        {/* Cart */}
+        <div className="flex-[2] bg-white border border-gray-200 rounded-xl p-4 sticky top-4">
+          <div className="flex items-center gap-2 mb-4">
+            <ShoppingCart size={18} className="text-gray-600" />
+            <h3 className="font-semibold text-gray-900">Cart</h3>
+            {cart.length > 0 && (
+              <span className="ml-auto text-xs bg-green-100 text-green-700 rounded-full px-2 py-0.5 font-medium">
+                {cart.reduce((s, c) => s + c.qty, 0)} items
+              </span>
             )}
-          </tbody>
-        </table>
+          </div>
+
+          {cart.length === 0 ? (
+            <p className="text-sm text-gray-400 text-center py-8">Add products to start a sale</p>
+          ) : (
+            <div className="space-y-3">
+              {cart.map((c) => (
+                <div key={c.product.id} className="flex items-center gap-2">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate">{c.product.name}</p>
+                    <p className="text-xs text-gray-500">{formatCurrency(c.product.price)} each</p>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button onClick={() => updateQty(c.product.id, -1)} className="p-1 rounded hover:bg-gray-100 text-gray-500">
+                      <Minus size={13} />
+                    </button>
+                    <span className="text-sm font-medium w-6 text-center">{c.qty}</span>
+                    <button onClick={() => updateQty(c.product.id, 1)} className="p-1 rounded hover:bg-gray-100 text-gray-500">
+                      <Plus size={13} />
+                    </button>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-900 w-16 text-right">
+                    {formatCurrency(c.qty * parseFloat(c.product.price))}
+                  </span>
+                  <button onClick={() => removeFromCart(c.product.id)} className="text-gray-300 hover:text-red-500 transition-colors">
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              ))}
+
+              <div className="border-t border-gray-200 pt-3 mt-3">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="font-semibold text-gray-900">Total</span>
+                  <span className="text-xl font-bold text-green-600">{formatCurrency(total)}</span>
+                </div>
+                <button
+                  onClick={checkout}
+                  disabled={checking}
+                  className="w-full bg-green-600 text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-green-700 disabled:opacity-50 transition-colors"
+                >
+                  {checking ? 'Processing…' : 'Checkout'}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

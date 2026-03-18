@@ -1,14 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Package, TrendingUp, Users, Upload, LogOut } from 'lucide-react';
+import { LayoutDashboard, Package, ShoppingCart, Tag, Users, BarChart2, CheckSquare, Settings, LogOut } from 'lucide-react';
 import { useAuthContext } from '../../context/AuthContext';
 import { cn } from '../../lib/utils';
 
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/sales', label: 'Sales', icon: ShoppingCart },
   { to: '/inventory', label: 'Inventory', icon: Package },
-  { to: '/sales', label: 'Sales & Forecast', icon: TrendingUp },
+  { to: '/products', label: 'Products', icon: Tag },
   { to: '/customers', label: 'Customers', icon: Users },
-  { to: '/import', label: 'Import CSV', icon: Upload },
+  { to: '/reports', label: 'Reports', icon: BarChart2 },
+  { to: '/tasks', label: 'Tasks', icon: CheckSquare },
+  { to: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar() {

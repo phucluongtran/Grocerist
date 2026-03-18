@@ -1,19 +1,38 @@
 import { useEffect, useState } from 'react';
 import { AlertTriangle, TrendingUp, ShoppingCart, Package } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import api from '../lib/api';
-import { formatCurrency } from '../lib/utils';
+import { formatCurrency, formatDate } from '../lib/utils';
 
 interface Alert { name: string; stock: number; low_stock_threshold: number }
 interface Summary { total_revenue: string; total_units: string; top_products: { name: string; units_sold: string }[] }
+interface Sale { quantity: number; sale_price: string; created_at: string }
 
 export default function Dashboard() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [summary, setSummary] = useState<Summary | null>(null);
+  const [sales, setSales] = useState<Sale[]>([]);
 
   useEffect(() => {
     api.get('/alerts').then((r) => setAlerts(r.data.low_stock));
     api.get('/sales/summary').then((r) => setSummary(r.data));
+    api.get('/sales').then((r) => setSales(r.data));
   }, []);
+
+  const barData = Object.values(
+    sales
+      .filter((s) => {
+        const d = new Date(s.created_at);
+        const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 7);
+        return d >= cutoff;
+      })
+      .reduce<Record<string, { date: string; revenue: number }>>((acc, s) => {
+        const date = formatDate(s.created_at);
+        if (!acc[date]) acc[date] = { date, revenue: 0 };
+        acc[date].revenue += s.quantity * parseFloat(s.sale_price);
+        return acc;
+      }, {})
+  ).sort((a, b) => a.date.localeCompare(b.date));
 
   return (
     <div className="space-y-6">
@@ -65,6 +84,21 @@ export default function Dashboard() {
             </ul>
           ) : <p className="text-sm text-gray-400">No sales yet today</p>}
         </div>
+      </div>
+
+      {/* 7-Day Revenue Chart */}
+      <div className="bg-white rounded-xl border border-gray-200 p-5">
+        <h3 className="font-semibold text-gray-900 mb-4">Revenue — Last 7 Days</h3>
+        {barData.length > 0 ? (
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={barData}>
+              <XAxis dataKey="date" tick={{ fontSize: 11 }} />
+              <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `$${v}`} />
+              <Tooltip formatter={(v) => formatCurrency(Number(v))} />
+              <Bar dataKey="revenue" fill="#16a34a" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        ) : <p className="text-sm text-gray-400 text-center py-10">No sales data in the last 7 days</p>}
       </div>
     </div>
   );
