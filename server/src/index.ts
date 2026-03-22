@@ -12,6 +12,7 @@ import alertRoutes from './routes/alerts';
 import importRoutes from './routes/import';
 import etlRoutes from './routes/etl';
 import { errorHandler } from './middleware/errorHandler';
+import { migrate } from './db/migrate';
 
 dotenv.config();
 
@@ -32,4 +33,12 @@ app.use('/api/etl', etlRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+migrate()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error('Failed to run migrations:', err);
+    process.exit(1);
+  });
