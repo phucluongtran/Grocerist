@@ -16,7 +16,7 @@ export function useAuth() {
     if (!token) { setLoading(false); return; }
     api.get('/auth/me')
       .then((r) => setUser(r.data.user))
-      .catch(() => localStorage.removeItem('token'))
+      .catch((err) => { if (err?.response?.status === 401) localStorage.removeItem('token'); })
       .finally(() => setLoading(false));
   }, []);
 

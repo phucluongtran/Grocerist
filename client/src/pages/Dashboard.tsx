@@ -29,7 +29,7 @@ export default function Dashboard() {
       .reduce<Record<string, { date: string; revenue: number }>>((acc, s) => {
         const date = formatDate(s.created_at);
         if (!acc[date]) acc[date] = { date, revenue: 0 };
-        acc[date].revenue += s.quantity * parseFloat(s.sale_price);
+        acc[date].revenue += s.quantity * (parseFloat(s.sale_price) || 0);
         return acc;
       }, {})
   ).sort((a, b) => a.date.localeCompare(b.date));

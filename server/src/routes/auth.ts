@@ -33,7 +33,7 @@ router.get('/me', requireAuth, (req: AuthRequest, res: Response) => {
 // Seed route — creates owner account if none exists (dev/setup only)
 router.post('/seed', async (req: Request, res: Response) => {
   const { name, email, password, role = 'owner', secret } = req.body;
-  if (secret !== process.env.SEED_SECRET && process.env.NODE_ENV === 'production') {
+  if (!process.env.SEED_SECRET || secret !== process.env.SEED_SECRET) {
     res.status(403).json({ error: 'Forbidden' });
     return;
   }

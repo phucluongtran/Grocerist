@@ -12,6 +12,7 @@ router.get('/', async (_req, res: Response) => {
 
 router.post('/', async (req: Request, res: Response) => {
   const { name, email, phone, loyalty_points } = req.body;
+  if (!name) { res.status(400).json({ error: 'name is required' }); return; }
   const result = await pool.query(
     'INSERT INTO app.customers (name, email, phone, loyalty_points) VALUES ($1,$2,$3,$4) RETURNING *',
     [name, email, phone, loyalty_points ?? 0]
@@ -21,6 +22,7 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.put('/:id', async (req: Request, res: Response) => {
   const { name, email, phone, loyalty_points } = req.body;
+  if (!name) { res.status(400).json({ error: 'name is required' }); return; }
   const result = await pool.query(
     'UPDATE app.customers SET name=$1, email=$2, phone=$3, loyalty_points=$4 WHERE id=$5 RETURNING *',
     [name, email, phone, loyalty_points ?? 0, req.params.id]

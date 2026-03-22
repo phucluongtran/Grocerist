@@ -75,32 +75,41 @@ router.post('/inventory', upload.single('file'), async (req: AuthRequest, res: R
   if (!req.file) { res.status(400).json({ error: 'No file uploaded' }); return; }
   const rows = await parseCSV(req.file.buffer);
   let imported = 0, skipped = 0;
-  for (const row of rows) {
-    const nameOrSku = col(row, 'productname', 'name', 'product', 'sku', 'barcode', 'code');
-    const stock = parseInt(col(row, 'stock', 'quantity', 'qty', 'stocklevel') || '-1');
-    if (!nameOrSku || stock < 0) { skipped++; continue; }
-    // find product by name or sku
-    const prod = await pool.query(
-      `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
-      [nameOrSku]
-    );
-    if (!prod.rows[0]) { skipped++; continue; }
-    const threshold = parseInt(col(row, 'threshold', 'minstockthreshold', 'lowstockthreshold', 'minqty') || '');
-    if (!isNaN(threshold) && threshold >= 0) {
-      await pool.query(
-        `UPDATE app.products SET low_stock_threshold=$1 WHERE id=$2`,
-        [threshold, prod.rows[0].id]
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    for (const row of rows) {
+      const nameOrSku = col(row, 'productname', 'name', 'product', 'sku', 'barcode', 'code');
+      const stock = parseInt(col(row, 'stock', 'quantity', 'qty', 'stocklevel') || '-1');
+      if (!nameOrSku || stock < 0) { skipped++; continue; }
+      const prod = await client.query(
+        `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
+        [nameOrSku]
       );
+      if (!prod.rows[0]) { skipped++; continue; }
+      const threshold = parseInt(col(row, 'threshold', 'minstockthreshold', 'lowstockthreshold', 'minqty') || '');
+      if (!isNaN(threshold) && threshold >= 0) {
+        await client.query(
+          `UPDATE app.products SET low_stock_threshold=$1 WHERE id=$2`,
+          [threshold, prod.rows[0].id]
+        );
+      }
+      await client.query(
+        `INSERT INTO app.inventory (product_id, stock)
+         VALUES ($1,$2)
+         ON CONFLICT (product_id) DO UPDATE SET stock=$2, last_updated=NOW()`,
+        [prod.rows[0].id, stock]
+      );
+      imported++;
     }
-    await pool.query(
-      `INSERT INTO app.inventory (product_id, stock)
-       VALUES ($1,$2)
-       ON CONFLICT (product_id) DO UPDATE SET stock=$2, last_updated=NOW()`,
-      [prod.rows[0].id, stock]
-    );
-    imported++;
+    await client.query('COMMIT');
+    res.json({ imported, skipped, total: rows.length });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
   }
-  res.json({ imported, skipped, total: rows.length });
 });
 
 // POST /api/import/customers
@@ -108,19 +117,29 @@ router.post('/customers', upload.single('file'), async (req: AuthRequest, res: R
   if (!req.file) { res.status(400).json({ error: 'No file uploaded' }); return; }
   const rows = await parseCSV(req.file.buffer);
   let imported = 0, skipped = 0;
-  for (const row of rows) {
-    const name = col(row, 'name', 'fullname', 'customername', 'firstname');
-    if (!name) { skipped++; continue; }
-    const email = col(row, 'email', 'emailaddress', 'mail');
-    const phone = col(row, 'phone', 'phonenumber', 'mobile', 'tel');
-    const loyaltyPoints = parseInt(col(row, 'loyaltypoints', 'loyalty', 'points') || '0') || 0;
-    await pool.query(
-      `INSERT INTO app.customers (name, email, phone, loyalty_points) VALUES ($1,$2,$3,$4)`,
-      [name, email || null, phone || null, loyaltyPoints]
-    );
-    imported++;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    for (const row of rows) {
+      const name = col(row, 'name', 'fullname', 'customername', 'firstname');
+      if (!name) { skipped++; continue; }
+      const email = col(row, 'email', 'emailaddress', 'mail');
+      const phone = col(row, 'phone', 'phonenumber', 'mobile', 'tel');
+      const loyaltyPoints = parseInt(col(row, 'loyaltypoints', 'loyalty', 'points') || '0') || 0;
+      await client.query(
+        `INSERT INTO app.customers (name, email, phone, loyalty_points) VALUES ($1,$2,$3,$4)`,
+        [name, email || null, phone || null, loyaltyPoints]
+      );
+      imported++;
+    }
+    await client.query('COMMIT');
+    res.json({ imported, skipped, total: rows.length });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
   }
-  res.json({ imported, skipped, total: rows.length });
 });
 
 // POST /api/import/sales
@@ -128,25 +147,37 @@ router.post('/sales', upload.single('file'), async (req: AuthRequest, res: Respo
   if (!req.file) { res.status(400).json({ error: 'No file uploaded' }); return; }
   const rows = await parseCSV(req.file.buffer);
   let imported = 0, skipped = 0;
-  for (const row of rows) {
-    const nameOrSku = col(row, 'productname', 'name', 'product', 'sku', 'barcode', 'code');
-    const quantity = parseInt(col(row, 'quantity', 'qty', 'units') || '0');
-    const salePrice = parseFloat(col(row, 'saleprice', 'price', 'unitprice', 'amount') || '0');
-    if (!nameOrSku || quantity <= 0 || isNaN(salePrice) || salePrice <= 0) { skipped++; continue; }
-    const createdAt = col(row, 'createdat', 'soldat', 'date', 'saledate', 'datetime', 'timestamp');
-    const prod = await pool.query(
-      `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
-      [nameOrSku]
-    );
-    if (!prod.rows[0]) { skipped++; continue; }
-    await pool.query(
-      `INSERT INTO app.sales (product_id, quantity, sale_price, created_at)
-       VALUES ($1,$2,$3,$4)`,
-      [prod.rows[0].id, quantity, salePrice, createdAt ? new Date(createdAt) : new Date()]
-    );
-    imported++;
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    for (const row of rows) {
+      const nameOrSku = col(row, 'productname', 'name', 'product', 'sku', 'barcode', 'code');
+      const quantity = parseInt(col(row, 'quantity', 'qty', 'units') || '0');
+      const salePrice = parseFloat(col(row, 'saleprice', 'price', 'unitprice', 'amount') || '0');
+      if (!nameOrSku || quantity <= 0 || isNaN(salePrice) || salePrice <= 0) { skipped++; continue; }
+      const createdAtRaw = col(row, 'createdat', 'soldat', 'date', 'saledate', 'datetime', 'timestamp');
+      const createdAt = createdAtRaw ? new Date(createdAtRaw) : new Date();
+      if (isNaN(createdAt.getTime())) { skipped++; continue; }
+      const prod = await client.query(
+        `SELECT id FROM app.products WHERE LOWER(name)=LOWER($1) OR (sku IS NOT NULL AND LOWER(sku)=LOWER($1))`,
+        [nameOrSku]
+      );
+      if (!prod.rows[0]) { skipped++; continue; }
+      await client.query(
+        `INSERT INTO app.sales (product_id, quantity, sale_price, created_at)
+         VALUES ($1,$2,$3,$4)`,
+        [prod.rows[0].id, quantity, salePrice, createdAt]
+      );
+      imported++;
+    }
+    await client.query('COMMIT');
+    res.json({ imported, skipped, total: rows.length });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
   }
-  res.json({ imported, skipped, total: rows.length });
 });
 
 export default router;

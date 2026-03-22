@@ -22,6 +22,7 @@ export function requireAuth(req: AuthRequest, res: Response, next: NextFunction)
     next();
   } catch {
     res.status(401).json({ error: 'Invalid token' });
+    return;
   }
 }
 

@@ -19,9 +19,13 @@ router.get('/:productId', async (req: Request, res: Response) => {
   );
 
   // Compute simple moving average from past 28 days
+  if (actual.rows.length === 0) {
+    res.json({ actual: [], forecast: [], has_data: false });
+    return;
+  }
+
   const totalQty = actual.rows.reduce((sum: number, r: { qty: string }) => sum + parseFloat(r.qty), 0);
-  const days = actual.rows.length || 1;
-  const avgPerDay = totalQty / days;
+  const avgPerDay = totalQty / actual.rows.length;
 
   const forecast = [];
   for (let i = 1; i <= 7; i++) {
@@ -36,6 +40,7 @@ router.get('/:productId', async (req: Request, res: Response) => {
   res.json({
     actual: actual.rows.map((r: { date: string; qty: string }) => ({ date: r.date, qty: parseFloat(r.qty) })),
     forecast,
+    has_data: true,
   });
 });
 

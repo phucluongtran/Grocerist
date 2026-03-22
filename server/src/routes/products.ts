@@ -14,6 +14,10 @@ router.get('/', async (_req, res: Response) => {
 
 router.post('/', requireOwner, async (req: AuthRequest, res: Response) => {
   const { name, category, sku, price, cost, low_stock_threshold } = req.body;
+  if (!name || price === undefined || price === null) {
+    res.status(400).json({ error: 'name and price are required' });
+    return;
+  }
   const client = await pool.connect();
   try {
     await client.query('BEGIN');
@@ -37,6 +41,10 @@ router.post('/', requireOwner, async (req: AuthRequest, res: Response) => {
 
 router.put('/:id', requireOwner, async (req: AuthRequest, res: Response) => {
   const { name, category, sku, price, cost, low_stock_threshold } = req.body;
+  if (!name || price === undefined || price === null) {
+    res.status(400).json({ error: 'name and price are required' });
+    return;
+  }
   const result = await pool.query(
     'UPDATE app.products SET name=$1, category=$2, sku=$3, price=$4, cost=$5, low_stock_threshold=$6 WHERE id=$7 RETURNING *',
     [name, category, sku, price, cost ?? null, low_stock_threshold ?? 10, req.params.id]
